@@ -14,11 +14,6 @@ public class AlbumServiceImpl implements AlbumService {
     @Autowired
     AlbumRepository albumRepository;
 
-    // Constructor for dependency injection
-    public AlbumServiceImpl(AlbumRepository albumRepository) {
-        this.albumRepository = albumRepository;
-    }
-
     @Override
     public List<Album> getAllAlbums() {
         return new ArrayList<>(albumRepository.findAll());

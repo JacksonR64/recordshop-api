@@ -20,6 +20,11 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    public Album getAlbumById(Long id) {
+        return albumRepository.findById(id).orElseThrow(() -> new RuntimeException("Album not found"));
+    }
+
+    @Override
     public Album postAlbum(Album album) {
         return albumRepository.save(album);
     }

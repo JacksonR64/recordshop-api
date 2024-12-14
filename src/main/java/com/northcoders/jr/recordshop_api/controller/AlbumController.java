@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/album")
 public class AlbumController {
+    //TODO add service Status passing for badPaths like 404
 
     @Autowired
     AlbumService albumService;
@@ -34,6 +35,11 @@ public class AlbumController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("album", "/api/v1/album/" + newAlbum.getId().toString());
         return new ResponseEntity<>(newAlbum, httpHeaders, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Album> putAlbum(@PathVariable long id, @RequestBody Album album){
+        return new ResponseEntity<>(albumService.putAlbum(album, id), HttpStatus.OK);
     }
 
 }

@@ -30,8 +30,8 @@ public class Album {
     private GENRE genre = GENRE.UNKNOWN;
 
     @Column
-    private int releaseYear = 0;
+    private Integer releaseYear = 0;
 
     @Column
-    private int stockCount = 0;
+    private Integer stockCount = 0;
 }

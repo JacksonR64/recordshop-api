@@ -36,4 +36,23 @@ public class AlbumController {
         return new ResponseEntity<>(newAlbum, httpHeaders, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Album> putAlbum(@PathVariable long id, @RequestBody Album album) {
+        Album newAlbum = albumService.putAlbum(id, album);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("album", "/api/v1/album/" + newAlbum.getId().toString());
+        return new ResponseEntity<>(newAlbum, httpHeaders, HttpStatus.ACCEPTED);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Album> patchAlbum (@PathVariable Long id, @RequestBody Album partialUpdate) {
+        Album updatedAlbum = albumService.patchAlbum(id, partialUpdate);
+        return ResponseEntity.ok(updatedAlbum);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Album> deleteBookById (@PathVariable long id){
+        return new ResponseEntity<>(albumService.deleteAlbum(id), HttpStatus.NO_CONTENT);
+    }
+
 }
